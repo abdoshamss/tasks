@@ -1,37 +1,23 @@
 import 'dart:io';
 
 void main(List<String> arguments) {
-// task1();
-//task2();
-//task3();
-//task4();
-//task5();
-//task6();
-//task7();
-//task8();
-//task9();
-//task10();
+  task8();
 }
 
 void task1() {
-  List<String> animals = [
+  List<String> list = [
     "Lion",
     "Tiger",
     "cheetah",
   ];
 
-//animals.forEach((animal)=>print(animal));
-
-  for (var animal in animals) {
+  for (String animal in list) {
     print(animal);
   }
-
-// for(int i =0 ;i<animals.length;i++)
-// print(animals[i]);
 }
 
 void task2() {
-  List<String> films = [
+  List<String> list = [
     "abdo",
     "Ali",
     "shamss",
@@ -41,14 +27,13 @@ void task2() {
     "Lion",
     "Asmaa"
   ];
-  List<String> filmsWithLetterA = [];
-  //films.forEach((film)=>film.startsWith("a")||film.startsWith("A")?filmsWithLetterA.add(film):null );
-  for (String film in films) {
-    film.startsWith("a") || film.startsWith("A")
-        ? filmsWithLetterA.add(film)
-        : null;
+  List<String> result = [];
+  for (String film in list) {
+    if (film.toLowerCase().startsWith('a')) {
+      result.add(film);
+    }
   }
-  print(filmsWithLetterA);
+  print(result);
 }
 
 void task3() {
@@ -59,9 +44,6 @@ void task3() {
     String password = stdin.readLineSync()!;
     if (i == 3) {
       print("you finished all your tryes");
-    } else if (!email.endsWith("@gmail.com") && password.length < 7) {
-      print(
-          "Your email is not correct. And your password is too shrot. Please enter your password with length <= 7. Please try again");
     } else if (!email.endsWith("@gmail.com")) {
       print("Your email is not correct. Please try again");
     } else if (password.length < 7) {
@@ -76,9 +58,9 @@ void task3() {
 
 void task4() {
   print("Please enter your first Number");
-  int firstNumber = int.tryParse(stdin.readLineSync()!.toString()) ?? 0;
+  int firstNumber = int.tryParse(stdin.readLineSync()!) ?? 0;
   print("Please enter your last Number");
-  int lastNumber = int.tryParse(stdin.readLineSync()!.toString()) ?? 0;
+  int lastNumber = int.tryParse(stdin.readLineSync()!) ?? 0;
 
   print("\n");
   printEventNumbers(firstNumber: firstNumber, lastNumber: lastNumber);
@@ -90,7 +72,7 @@ void printEventNumbers({required int firstNumber, required int lastNumber}) {
   print("Your Even Numbers is:");
   for (firstNumber; firstNumber <= lastNumber; firstNumber++) {
     if (firstNumber.isEven) {
-      print(firstNumber == 0 ? null : firstNumber);
+      print(firstNumber);
     }
   }
 }
@@ -99,7 +81,7 @@ void printOddNumbers({required int firstNumber, required int lastNumber}) {
   print("Your Odd Numbers is:");
   for (firstNumber; firstNumber <= lastNumber; firstNumber++) {
     if (firstNumber.isOdd) {
-      print(firstNumber == 0 ? null : firstNumber);
+      print(firstNumber);
     }
   }
 }
@@ -107,7 +89,7 @@ void printOddNumbers({required int firstNumber, required int lastNumber}) {
 void task5() {
   print("Please enter a letter or two or three.");
   String letters = stdin.readLineSync()!;
-  List<String> words = [
+  List<String> list = [
     "abdo",
     "Shamss",
     "Mostafa",
@@ -123,16 +105,15 @@ void task5() {
     "acdefgg",
     "Mohnd"
   ];
-  List<String> wordsStartswithLetters = [];
+  List<String> result = [];
 
-  for (String word in words) {
-    word.startsWith(letters) ? wordsStartswithLetters.add(word) : null;
+  for (String word in list) {
+    if (word.startsWith(letters)) {
+      result.add(word);
+    }
   }
-  // words.forEach((word) =>
-  //     word.startsWith(letters)
-  //         ? wordsStartswithLetters.add(word)
-  //         : null);
-  print(wordsStartswithLetters);
+
+  print(result);
 }
 
 void task6() {
@@ -156,17 +137,11 @@ void task8() {
   for (int i = 0; i < 10; i++) {
     print("enter name ${(i + 1)}");
 
-    String name = stdin.readLineSync()!;
+    name = stdin.readLineSync()!;
     names.add(name);
   }
-  for (var element in names) {
-    name += element;
-  }
 
-  // names.forEach((element)=>name+=element);
-
-  // if you want to print spaces use this
-  // print(name);
+  name = names.join("");
 
   print(name.replaceAll(" ", ""));
 }
@@ -182,25 +157,24 @@ void task9() {
     "manga",
     "malak"
   ];
-  for (int i = 0; i < names.length; i++) {
-    if (i.isEven) {
-      print(names[i]);
-    }
+  for (int i = 0; i < names.length; i += 2) {
+    print(names[i]);
   }
 }
 
 void task10() {
+  List<String> cases = ["cloes", "exit", "end"];
   print("Please enter names");
-  List<String> names = [];
+  List<String> list = [];
   int counter = 1;
   while (true) {
     print("Please enter name $counter");
     String name = stdin.readLineSync()!;
-    if (name == "cloes" || name == "exit" || name == "end") {
+    if (cases.contains(name)) {
       break;
     }
-    names.add(name);
+    list.add(name);
     counter++;
   }
-  print("The List of names is $names");
+  print("The List of names is $list");
 }
