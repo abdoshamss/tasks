@@ -1,7 +1,7 @@
 import 'dart:io';
 
 void main(List<String> arguments) {
-  task8();
+  problem71A();
 }
 
 void task1() {
@@ -70,7 +70,7 @@ void task4() {
 
 void printEventNumbers({required int firstNumber, required int lastNumber}) {
   print("Your Even Numbers is:");
-  for (firstNumber; firstNumber <= lastNumber; firstNumber++) {
+  for (; firstNumber <= lastNumber; firstNumber++) {
     if (firstNumber.isEven) {
       print(firstNumber);
     }
@@ -79,7 +79,7 @@ void printEventNumbers({required int firstNumber, required int lastNumber}) {
 
 void printOddNumbers({required int firstNumber, required int lastNumber}) {
   print("Your Odd Numbers is:");
-  for (firstNumber; firstNumber <= lastNumber; firstNumber++) {
+  for (; firstNumber <= lastNumber; firstNumber++) {
     if (firstNumber.isOdd) {
       print(firstNumber);
     }
@@ -177,4 +177,17 @@ void task10() {
     counter++;
   }
   print("The List of names is $list");
+}
+
+void problem71A() {
+  print("Write a word");
+  String word = stdin.readLineSync()!;
+
+  String result;
+  if (word.length < 10) {
+    result = word;
+  } else {
+    result = word[0] + (word.length - 2).toString() + word[word.length - 1];
+  }
+  print("The word is $result");
 }
