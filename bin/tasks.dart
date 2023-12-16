@@ -1,7 +1,7 @@
 import 'dart:io';
 
 void main(List<String> arguments) {
-  problem71A();
+printEventNumbersBeforeSpeceficEventNumber();
 }
 
 void task1() {
@@ -190,4 +190,35 @@ void problem71A() {
     result = word[0] + (word.length - 2).toString() + word[word.length - 1];
   }
   print("The word is $result");
+}
+
+void problem281A() {
+  print("Write a word");
+  String word = stdin.readLineSync()!;
+  String result = "";
+  // another solution
+
+  // for (int i = 0; i < word.length; i++) {
+  //   if (i == 0) {
+  //     result += word[i].toUpperCase();
+  //   } else {
+  //     result += word[i];
+  //   }
+  // }
+  result = word.replaceFirst(word[0], word[0].toUpperCase());
+  print(result);
+}
+void printEventNumbersBeforeSpeceficEventNumber(){
+  print("Please enter an event number");
+  int number = int.tryParse(stdin.readLineSync()!) ?? 0;
+  List<int> results = [];
+  for (int i = 0; i <= number; i+=2) {
+    for (int a = 0; a <= i; a+=2) {
+      if (i + a == number) {
+        results.add(a);
+        results.add(i);
+      }
+    }
+  }
+  print(results);
 }
